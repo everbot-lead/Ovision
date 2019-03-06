@@ -1,0 +1,174 @@
+
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Онлайн керування</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js"></script>
+<script>
+        var socket = io.connect('http://192.168.1.3:8080');
+
+        var keys = [];
+
+
+        document.onkeyup = function (event) {
+
+            var code = event.which;
+//            console.log(code);
+            if ((code == 37 || code == 38)) {
+                keys.splice(keys.indexOf(event.which), 1);
+                console.log(keys);
+                socket.on('eventClient', function (data) {
+                    data = keys;
+
+                });
+                console.log(keys);
+                socket.emit('eventServer', keys);
+            }else if ((code == 39 || code == 38)) {
+                keys.splice(keys.indexOf(event.which), 1);
+                console.log(keys);
+                socket.on('eventClient', function (data) {
+                    data = keys;
+                });
+                socket.emit('eventServer', keys);
+            }else if ((code == 39 || code == 40)) {
+                keys.splice(keys.indexOf(event.which), 1);
+                console.log(keys);
+                socket.on('eventClient', function (data) {
+                    data = keys;
+                });
+                socket.emit('eventServer', keys);
+            }else if ((code == 37 || code == 40)) {
+                keys.splice(keys.indexOf(event.which), 1);
+                console.log(keys);
+                socket.on('eventClient', function (data) {
+                    data = keys;
+                });
+                socket.emit('eventServer', keys);
+            }
+
+
+        }
+
+
+        document.onkeydown = function (event) {
+
+            var code = event.which;
+//            console.log(code);
+            if ((code == 37 || code == 38) && (keys.indexOf(code) < 0)) {
+                keys.push(code);
+                console.log(keys);
+                socket.on('eventClient', function (data) {
+                    data = keys;
+                });
+                socket.emit('eventServer', keys);
+            } else if ((code == 39 || code == 38) && (keys.indexOf(code) < 0)) {
+                keys.push(code);
+                console.log(keys);
+                socket.on('eventClient', function (data) {
+                    data = keys;
+                });
+                socket.emit('eventServer', keys);
+            }else if ((code == 39 || code == 40) && (keys.indexOf(code) < 0)) {
+                keys.push(code);
+                console.log(keys);
+                socket.on('eventClient', function (data) {
+                    data = keys;
+                });
+                socket.emit('eventServer', keys);
+            }else if ((code == 37 || code == 40) && (keys.indexOf(code) < 0)) {
+                keys.push(code);
+                console.log(keys);
+                socket.on('eventClient', function (data) {
+                    data = keys;
+                });
+                socket.emit('eventServer', keys);
+            }
+
+
+
+        }
+	</script>
+ </head>
+ <body>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+ 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+ 
+<style>
+   body {
+    background-image: url(5.jpg) ; /* Путь к фоновому изображению */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: 0px 60px;
+    background-repeat: no-repeat;
+    background-size: cover;
+   }
+      .navv{
+    
+  margin: auto;
+}
+  </style>
+
+
+
+ <nav class="navbar navbar-expand-lg navbar-light bg-dark" style="margin-top: 1px">
+<div class="navv">
+ <a href = "main.html"> <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." style="margin: 5px; text-decoration: underline">
+  Головна
+</button></a>
+
+<a href = "shop.html"><button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." style="margin: 5px">
+  Інтернет-магазин
+</button></a>
+
+<a href = "Ovision.html"><button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." style="margin: 5px;">
+  Ovision
+</button></a>
+
+<a href = "about.html"><button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." style="margin: 5px">
+  Про нас
+</button></a>
+  </div>
+</nav>
+<br>
+<br>
+<br>
+
+
+ <center>
+   <style type="text/css">
+    { 
+width:700px; 
+height:496px; 
+overflow:hidden; 
+position:relative; 
+}
+
+#innerIframe 
+{ 
+position:center; 
+top:-546px; 
+left:-349px; 
+width:610px; 
+height:500px; 
+}
+
+   </style>
+<div id='outerdiv'> 
+<iframe src="192.168.1.3:8081" id='innerIframe' scrolling=no></iframe> 
+</center>
+
+<center>
+<a href = "Ovision.html"><button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." style="margin: 5px">
+  Вийти
+</button></a>
+</center>
+<br>
+<br>
+<br>
+
+ </body>
+</html>
